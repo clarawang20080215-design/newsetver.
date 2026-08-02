@@ -41,23 +41,23 @@
       width: 100%; 
       max-width: 380px; 
       height: 100dvh; 
-      max-height: 780px; 
+      max-height: none; 
       background: var(--paper-bg); 
       position: relative; 
       display: flex; 
       flex-direction: column; 
       overflow: hidden;
+      margin-top: -15px;
     }
     @media (min-width: 420px) { 
       .phone-frame { 
         border-radius: 20px;            /* 🌟 把圆角改小一点，显得更精细 */
         height: 92vh;                   /* 🌟 稍微拉高一点高度，减少上下多余的空隙 */
         box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
-        border: 4px solid var(--theme-outer); /* 🌟 把原本很厚重的 8px 边框改薄成 4px，额头就变窄了！ */
+        border: 2px solid var(--theme-outer); /* 🌟 把原本很厚重的 8px 边框改薄成 4px，额头就变窄了！ */
         overflow: hidden;
       } 
     }
-
     .status-bar { 
       height: 22px;          /* 🌟 把原本的 26px 改小，整个状态栏就变薄了 */
       background: rgba(255,253,249,0.95); 
