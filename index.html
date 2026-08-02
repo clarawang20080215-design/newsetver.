@@ -36,28 +36,18 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
-/* 📱 让手机外框保持修长、细边框和完美滚动 */
-    /* 📱 让手机外框完美适配手机屏幕，防止上下溢出 */
+
     .phone-frame {
       width: 100%;
-      max-width: 375px;
-      /* 🌟 核心修改：使用 100vh 配合 flex 布局内部滚动，或者直接用固定的安全高度 */
-      height: 100vh;
-      height: 100dvh;
+      max-width: 360px;            /* 稍微窄一点点，更有修长感 */
+      height: 100dvh;              /* 撑满屏幕 */
+      max-height: 840px;           /* 🌟 把最大高度拉大（原本是 780px），让它变成漂亮的修长条形 */
       background: var(--paper-bg);
       position: relative;
       display: flex;
       flex-direction: column;
-      
-      /* 🌟 核心优化：开启硬件加速 */
-      transform: translateZ(0);
-      -webkit-overflow-scrolling: touch; 
-      
-      overflow: hidden; /* 外部绝对不滚动，由内部容器滚动 */
-      border-radius: 0; /* 手机全屏玩时可以去掉外框圆角，或者保留小圆角 */
-      border: none;
-      box-shadow: none;
-      margin: auto;
+      overflow: hidden;
+      margin: 0 auto;
     }
 
     @media (min-width: 420px) { 
