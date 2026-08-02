@@ -39,19 +39,15 @@
 
     .phone-frame {
       width: 100%;
-      max-width: 393px;            /* 对应 iPhone 标准宽度（如 iPhone 14/15 尺寸） */
-      height: 100dvh;              /* 撑满手机浏览器的真实可视高度 */
+      max-width: 360px;            /* 稍微窄一点点，更有修长感 */
+      height: 100dvh;              /* 撑满屏幕 */
+      max-height: 840px;           /* 🌟 把最大高度拉大（原本是 780px），让它变成漂亮的修长条形 */
       background: var(--paper-bg);
       position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       margin: 0 auto;
-      
-      /* 🌟 核心：适配 iPhone 圆角和顶部安全距离 */
-      border-radius: 44px;         /* 模拟 iPhone 的大圆角外框 */
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      border: 10px solid #1a1a1a;  /* 模拟手机黑边框（如果你想要纯网页无边框，可以把这行删掉） */
     }
     @media (min-width: 420px) { 
       .phone-frame { 
