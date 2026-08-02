@@ -37,7 +37,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
-    /* 📱 让手机外框保持修长、细边框和完美滚动 */
     .phone-frame {
       width: 100%;
       max-width: 375px;
@@ -48,11 +47,15 @@
       display: flex;
       flex-direction: column;
       
-      /* 🌟 核心优化 1：开启硬件加速，让手机滑动时极度丝滑，不卡顿 */
+      /* 🌟 核心修改：用 space-between 让头部、中间日历/模块、底部按钮在竖直方向上舒展排布 */
+      justify-content: space-between; 
+      
+      /* 🌟 去掉顶部的额外内边距，让内容自然上去 */
+      padding: 6px 10px 12px 10px; 
+
       transform: translateZ(0);
       -webkit-overflow-scrolling: touch; 
-      
-      overflow: hidden; /* 外框固定，内部滚动 */
+      overflow: hidden;
       border-radius: 36px;
       border: 1.5px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 20px 40px rgba(0,0,0,0.12);
