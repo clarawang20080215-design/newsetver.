@@ -37,10 +37,26 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
-    .phone-frame {
-      width: 100%; max-width: 380px; height: 100dvh; max-height: 780px; background: var(--paper-bg); position: relative; display: flex; flex-direction: column; overflow: hidden;
+    .phone-frame { 
+      width: 100%; 
+      max-width: 380px; 
+      height: 100dvh; 
+      max-height: 780px; 
+      background: var(--paper-bg); 
+      position: relative; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden;
     }
-    @media (min-width: 420px) { .phone-frame { border-radius: 30px; height: 88vh; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 8px solid var(--theme-outer); overflow: hidden;} }
+    @media (min-width: 420px) { 
+      .phone-frame { 
+        border-radius: 20px;            /* 🌟 把圆角改小一点，显得更精细 */
+        height: 92vh;                   /* 🌟 稍微拉高一点高度，减少上下多余的空隙 */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
+        border: 4px solid var(--theme-outer); /* 🌟 把原本很厚重的 8px 边框改薄成 4px，额头就变窄了！ */
+        overflow: hidden;
+      } 
+    }
 
     .status-bar { 
       height: 22px;          /* 🌟 把原本的 26px 改小，整个状态栏就变薄了 */
@@ -59,9 +75,9 @@
       margin-top: -2px;      
     }
     /* 📖 书签 */
-    .bookmark { position: absolute; top: 28px; right: 14px; width: 22px; height: 36px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
+    .bookmark { position: absolute; top: 16px; right: 14px; width: 28px; height: 38px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
     .bookmark::after { content: ''; position: absolute; bottom: 0; border: 11px solid transparent; border-bottom: 6px solid var(--paper-bg); }
-    .bookmark-icon { font-size: 10px; color: white; }
+    .bookmark-icon { font-size: 14px; color: white; }
 
     /* ⚙️ 可拖动悬浮球 */
     .floating-set-ball {
@@ -366,7 +382,7 @@
       <span class="theme-btn" data-t="pink" style="width:14px; height:14px; border-radius:50%; background:#c47b7b; border:2px solid #fff; cursor:pointer;" title="粉红色 (🍒)"></span>
     </div>
 
-    <button class="flip-btn" id="flipBtn" style="padding:6px; border-radius:10px; background:var(--theme-accent); color:white; border:none; font-weight:bold; cursor:pointer; font-size:11px; margin-top:auto;">翻开日记聊天本 📖</button>
+    <button class="flip-btn" id="flipBtn" style="padding:12px; border-radius:10px; background:var(--theme-accent); color:white; border:none; font-weight:bold; cursor:pointer; font-size:14px; margin-top:auto;">翻开日记聊天本 📖</button>
   </div>
 
   <div class="chat-interface hidden" id="chatPage">
