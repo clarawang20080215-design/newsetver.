@@ -37,10 +37,27 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
-    .phone-frame {
-      width: 100%; max-width: 380px; height: 100dvh; max-height: 780px; background: var(--paper-bg); position: relative; display: flex; flex-direction: column; overflow: hidden;
+    .phone-frame { 
+      width: 100%; 
+      max-width: 380px; 
+      height: 100dvh; 
+      max-height: 780px; 
+      background: var(--paper-bg); 
+      position: relative; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden;
+      padding-top: 0px; /* 🌟 顶部内边距清零，不留白 */
     }
-    @media (min-width: 420px) { .phone-frame { border-radius: 30px; height: 88vh; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 8px solid var(--theme-outer); overflow: hidden;} }
+    @media (min-width: 420px) { 
+      .phone-frame { 
+        border-radius: 30px; 
+        height: 88vh; 
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
+        border: 8px solid var(--theme-outer); 
+        overflow: hidden;
+      } 
+    }
 
     .status-bar { 
       height: 26px; 
@@ -55,8 +72,8 @@
       flex-shrink: 0; 
       border-bottom: 1px solid rgba(0,0,0,0.03); 
       
-      /* 🌟 把它稍微往回收一点，既往上移了一点点，又不会顶到最上面 */
-      margin-top: -4px; 
+      /* 🌟 核心：把这一行整体往上提，数字越大往上越多 */
+      margin-top: -10px; 
     }
     /* 📖 书签 */
     .bookmark { position: absolute; top: 28px; right: 14px; width: 22px; height: 36px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
