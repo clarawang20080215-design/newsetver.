@@ -334,9 +334,7 @@
     </div>
 
     <div class="diy-bar">
-      <div style="font-size:9.5px; font-weight:bold; display: flex; align-items: center; justify-content: space-between;">
-        <span>🎀 自由贴纸</span>
-      </div>
+      <div style="font-size:9.5px; font-weight:bold;">🎀 自由贴纸 </div>
       <div class="sticker-scroll" id="stickerInv">
         <span class="sticker-item" data-val="🍀">🍀</span>
         <span class="sticker-item" data-val="🐾">🐾</span>
@@ -344,22 +342,7 @@
         <span class="sticker-item" data-val="🎧">🎧</span>
         <span class="sticker-item" data-val="🎼">🎼</span>
         <span class="sticker-item" data-val="🗝️">🗝️</span>
-        
-        <label for="nativeEmojiInput" class="sticker-item" style="width: 20px; height: 20px; border-radius: 50%; border: 1.5px dashed var(--theme-accent); background: rgba(255,255,255,0.8); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; color: var(--theme-accent); cursor: pointer; margin-bottom: 0; vertical-align: middle;">+</label>
       </div>
-
-      <input type="text" id="nativeEmojiInput" style="position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;" oninput="if(this.value) { 
-        const val = this.value.trim();
-        if(val) {
-          if(typeof playSound === 'function') playSound('sticker');
-          if(typeof sticks !== 'undefined') {
-            sticks.push({ val: val, x: 30 + Math.random()*150, y: 120 + Math.random()*200 });
-            if(typeof saveSticks === 'function') saveSticks(); 
-            if(typeof renderStickers === 'function') renderStickers();
-          }
-        }
-        this.value=''; 
-      }">
     </div>
 
     <div style="display:flex; justify-content:center; gap:8px;">
