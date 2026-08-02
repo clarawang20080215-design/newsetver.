@@ -51,11 +51,21 @@
     }
     @media (min-width: 420px) { 
       .phone-frame { 
-        border-radius: 20px;            /* 🌟 把圆角改小一点，显得更精细 */
-        height: 92vh;                   /* 🌟 稍微拉高一点高度，减少上下多余的空隙 */
-        box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
-        border: 2px solid var(--theme-outer); /* 🌟 把原本很厚重的 8px 边框改薄成 4px，额头就变窄了！ */
+        max-width: 375px;            /* 保持修长的手机宽度 */
+        height: 92vh;                /* 保持长条形的比例 */
+        max-height: 840px;           /* 修长的高度 */
+        border-radius: 36px;         /* 现代手机的大圆角 */
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* 外围柔和阴影 */
+        
+        /* 🌟 核心：做成一条细细的精致边框 */
+        border: 1.5px solid rgba(0, 0, 0, 0.15); /* 细边框，颜色半透明，非常高级 */
+        
         overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--paper-bg);
+        margin: auto;
       } 
     }
     .status-bar { 
