@@ -191,17 +191,19 @@
     .sticker-on-page.selected .sticker-del-corner { display: block; }
 
     /* 💬 聊天界面 */
+    ```css
     .chat-interface { 
       display: flex; 
       flex-direction: column; 
       position: absolute; 
-      top: 10px;      /* 🌟 核心：把顶部距离从 26px 改小（比如 10px 或 5px），整个聊天页就往上提了 */
+      top: 22px;   /* 紧贴顶部状态栏下方 */
       left: 0; 
       right: 0; 
-      bottom: 20px;   /* 🌟 核心：把底部留白撑起来（比如 20px），让底部往上收，不再贴得那么死 */
+      bottom: 0; 
       background: var(--paper-bg); 
       background-size: cover; 
       background-position: center; 
+      z-index: 35; /* 盖住封面 */
     }
     .chat-header { display: flex; align-items: center; padding: 8px 12px; background: rgba(255,253,249,0.95); border-bottom: 1px solid #ede3d5; gap: 8px; flex-shrink: 0; position: relative; }
     
@@ -378,17 +380,16 @@
 
     <button class="flip-btn" id="flipBtn" style="padding:20px; border-radius:10px; background:var(--theme-accent); color:white; border:none; font-weight:bold; cursor:pointer; font-size:14px; margin-top:auto;">翻开日记聊天本 📖</button>
   </div>
-    <div style="display:flex; justify-content:center; gap:8px;">
+    
+      <div style="display:flex; justify-content:center; gap:8px; margin-top: auto; padding-top: 4px;">
       <span class="theme-btn" data-t="" style="width:14px; height:14px; border-radius:50%; background:#c49a78; border:2px solid #fff; cursor:pointer;" title="棕黄色 (✏️)"></span>
       <span class="theme-btn" data-t="green" style="width:14px; height:14px; border-radius:50%; background:#6b8e68; border:2px solid #fff; cursor:pointer;" title="绿色 (🍏)"></span>
       <span class="theme-btn" data-t="blue" style="width:14px; height:14px; border-radius:50%; background:#688ab5; border:2px solid #fff; cursor:pointer;" title="蓝色 (💧)"></span>
       <span class="theme-btn" data-t="pink" style="width:14px; height:14px; border-radius:50%; background:#c47b7b; border:2px solid #fff; cursor:pointer;" title="粉红色 (🍒)"></span>
     </div>
 
-    <button class="flip-btn" id="flipBtn" style="padding:12px; border-radius:10px; background:var(--theme-accent); color:white; border:none; font-weight:bold; cursor:pointer; font-size:14px; margin-top:auto;">翻开日记聊天本 📖</button>
-  </div>
-
-  <div class="chat-interface hidden" id="chatPage">
+    <button class="flip-btn" id="flipBtn" style="padding:10px; border-radius:10px; background:var(--theme-accent); color:white; border:none; font-weight:bold; cursor:pointer; font-size:13px; margin-top:6px; flex-shrink:0;">翻开日记聊天本 📖</button>
+  </div> <div class="chat-interface hidden" id="chatPage">
     <div class="chat-header">
       <div class="chat-back-btn" id="chatBackBtn" title="返回">〈</div>
       <img id="botHeaderAva" class="avatar" src="">
@@ -422,7 +423,7 @@
         <input type="text" id="chatIn" placeholder="写下今天的心情...">
         <button class="send-btn" id="sendBtn">发送</button>
       </div>
-      <button class="ai-btn" id="aiReplyBtn">๑☆⁺ʚ^ ̳   ̫   ̳^ ɞ⁺☆๑ıllıııllıl ♡°.•</button>
+      <button class="ai-btn" id="aiReplyBtn">๑☆⁺ʚ^ ̳    ̫    ̳^ ɞ⁺☆๑ıllıııllıl ♡°.•</button>
     </div>
   </div>
 
@@ -460,6 +461,12 @@
     <div class="settings-item"><label>聊天背景壁纸</label><input type="file" id="bgImgUpload" accept="image/*"></div>
     <div class="settings-item"><label>你的头像</label><input type="file" id="userAvaUpload" accept="image/*"></div>
     <div class="settings-item"><label>伴侣头像</label><input type="file" id="botAvaUpload" accept="image/*"></div>
+
+    <button id="saveSet" style="padding:8px; background:var(--theme-accent); color:#fff; border:none; border-radius:8px; font-weight:bold; margin-top:10px; cursor:pointer;">保存设置 ✨</button>
+  </div>
+
+</div> ```
+
 
     <button id="saveSet" style="padding:8px; background:var(--theme-accent); color:#fff; border:none; border-radius:8px; font-weight:bold; margin-top:10px; cursor:pointer;">保存设置 ✨</button>
   </div>
