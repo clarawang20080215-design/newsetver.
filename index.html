@@ -37,6 +37,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
+    /* 📱 让手机外框保持修长、细边框和完美滚动 */
     .phone-frame {
       width: 100%;
       max-width: 375px;
@@ -46,18 +47,16 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 6px 10px 12px 10px; 
-
-      /* 🌟 核心：把整个手机框往上提（你可以把 -20px 改成更大或更小来调整高度） */
-      margin: -15px auto auto auto; 
-
+      
+      /* 🌟 核心优化 1：开启硬件加速，让手机滑动时极度丝滑，不卡顿 */
       transform: translateZ(0);
       -webkit-overflow-scrolling: touch; 
-      overflow: hidden;
+      
+      overflow: hidden; /* 外框固定，内部滚动 */
       border-radius: 36px;
       border: 1.5px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      margin: auto;
     }
 
     /* 🌟 核心优化 2：如果是页面内部需要上下滑动的区域（例如主页内容或日历下方） */
@@ -102,6 +101,47 @@
       /* 🌟 让时间电量这行整体往上提一点点 */
       margin-top: -2px;      
     }
+    /* 🌟 修复上下宽度不一致 */
+    /* 🌟 修复上下宽度不一致 */
+    .phone-frame > *,
+    .scrollable-content > *,
+    .home-page,
+    .main-page,
+    .page-content,
+    .section,
+    .card,
+    .calendar-container,
+    .todo-box,
+    .sticker-area,
+    .pet-area {
+        width:100%;
+        box-sizing:border-box;
+    }
+
+
+    /* 防止左右模块被内容撑窄 */
+    .row,
+    .flex-row,
+    .grid-row {
+        width:100%;
+        box-sizing:border-box;
+    }
+
+
+    /* 两列卡片自动平分 */
+    .two-column,
+    .side-by-side {
+        display:flex;
+        width:100%;
+        gap:10px;
+    }
+
+
+    .two-column > *,
+    .side-by-side > * {
+        flex:1;
+        min-width:0;
+    }} 
     /* 📖 书签 */
     .bookmark { position: absolute; top: 16px; right: 14px; width: 28px; height: 38px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
     .bookmark::after { content: ''; position: absolute; bottom: 0; border: 11px solid transparent; border-bottom: 6px solid var(--paper-bg); }
