@@ -46,12 +46,11 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      
-      /* 🌟 核心修改：用 space-between 让头部、中间日历/模块、底部按钮在竖直方向上舒展排布 */
-      justify-content: space-between; 
-      
-      /* 🌟 去掉顶部的额外内边距，让内容自然上去 */
+      justify-content: space-between;
       padding: 6px 10px 12px 10px; 
+
+      /* 🌟 核心：把整个手机框往上提（你可以把 -20px 改成更大或更小来调整高度） */
+      margin: -15px auto auto auto; 
 
       transform: translateZ(0);
       -webkit-overflow-scrolling: touch; 
@@ -59,7 +58,6 @@
       border-radius: 36px;
       border: 1.5px solid rgba(0, 0, 0, 0.15);
       box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      margin: auto;
     }
 
     /* 🌟 核心优化 2：如果是页面内部需要上下滑动的区域（例如主页内容或日历下方） */
