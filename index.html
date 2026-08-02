@@ -37,111 +37,169 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
-    /* 📱 让手机外框保持修长、细边框和完美滚动 */
-    .phone-frame {
-      width: 100%;
-      max-width: 375px;
-      height: 100dvh;
-      max-height: 840px;
-      background: var(--paper-bg);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      
-      /* 🌟 核心优化 1：开启硬件加速，让手机滑动时极度丝滑，不卡顿 */
-      transform: translateZ(0);
-      -webkit-overflow-scrolling: touch; 
-      
-      overflow: hidden; /* 外框固定，内部滚动 */
-      border-radius: 36px;
-      border: 1.5px solid rgba(0, 0, 0, 0.15);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      margin: auto;
-    }
+    /* 📱 手机外框 */
+.phone-frame {
+  width: 100%;
+  max-width: 375px;
+  height: 100dvh;
+  max-height: 840px;
 
-    /* 🌟 核心优化 2：如果是页面内部需要上下滑动的区域（例如主页内容或日历下方） */
-    .scrollable-content {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch; /* 保证在苹果手机上滑动有自然的“惯性滚动”阻尼感 */
-      overscroll-behavior-y: contain;   /* 防止下拉整个网页跟着一起乱晃 */
-    }
-    @media (min-width: 420px) { 
-      .phone-frame { 
-        max-width: 375px;            /* 保持修长的手机宽度 */
-        height: 92vh;                /* 保持长条形的比例 */
-        max-height: 840px;           /* 修长的高度 */
-        border-radius: 36px;         /* 现代手机的大圆角 */
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* 外围柔和阴影 */
-        
-        /* 🌟 核心：做成一条细细的精致边框 */
-        border: 1.5px solid rgba(0, 0, 0, 0.15); /* 细边框，颜色半透明，非常高级 */
-        
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        background: var(--paper-bg);
-        margin: auto;
-      } 
-    }
-    .status-bar { 
-      height: 22px;          /* 🌟 把原本的 26px 改小，整个状态栏就变薄了 */
-      background: rgba(255,253,249,0.95); 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      padding: 0 12px;       /* 左右保持间距 */
-      font-size: 10px; 
-      font-weight: 600; 
-      z-index: 50; 
-      flex-shrink: 0; 
-      border-bottom: 1px solid rgba(0,0,0,0.03); 
-      
-      /* 🌟 让时间电量这行整体往上提一点点 */
-      margin-top: -2px;      
-    }
-    /* 🌟 修复上下宽度不一致 */
-    /* 🌟 修复上下宽度不一致 */
-    .phone-frame > *,
-    .scrollable-content > *,
-    .home-page,
-    .main-page,
-    .page-content,
-    .section,
-    .card,
-    .calendar-container,
-    .todo-box,
-    .sticker-area,
-    .pet-area {
-        width:100%;
-        box-sizing:border-box;
-    }
+  background: var(--paper-bg);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+
+  overflow: hidden;
+
+  border-radius:36px;
+  border:1.5px solid rgba(0,0,0,0.15);
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
+
+  margin:auto;
+}
 
 
-    /* 防止左右模块被内容撑窄 */
-    .row,
-    .flex-row,
-    .grid-row {
-        width:100%;
-        box-sizing:border-box;
-    }
+/* 页面滚动区域 */
+.scrollable-content {
+  flex:1;
+  width:100%;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:contain;
+
+  box-sizing:border-box;
+}
 
 
-    /* 两列卡片自动平分 */
-    .two-column,
-    .side-by-side {
-        display:flex;
-        width:100%;
-        gap:10px;
-    }
+/* 大屏保持手机比例 */
+@media(min-width:420px){
+
+.phone-frame{
+
+ max-width:375px;
+ height:92vh;
+ max-height:840px;
+
+ border-radius:36px;
+
+ overflow:hidden;
+
+ display:flex;
+ flex-direction:column;
+
+ margin:auto;
+
+}
+
+}
 
 
-    .two-column > *,
-    .side-by-side > * {
-        flex:1;
-        min-width:0;
-    }} 
+/* 顶部状态栏 */
+.status-bar{
+
+ height:22px;
+
+ background:rgba(255,253,249,0.95);
+
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+
+ padding:0 12px;
+
+ font-size:10px;
+ font-weight:600;
+
+ z-index:50;
+
+ flex-shrink:0;
+
+ border-bottom:1px solid rgba(0,0,0,0.03);
+
+ margin-top:-2px;
+
+}
+
+
+/* =========================
+   修复上下宽度不一致
+========================= */
+
+
+/* 主内容容器 */
+.home-page,
+.main-page,
+.page-content,
+.scrollable-content,
+.calendar-container{
+
+ width:100%;
+ max-width:100%;
+
+ box-sizing:border-box;
+
+}
+
+
+/* 卡片默认满宽 */
+.card,
+.section,
+.todo-box,
+.sticker-area,
+.pet-area{
+
+ width:100%;
+
+ box-sizing:border-box;
+
+}
+
+
+/* 横向布局 */
+.row,
+.flex-row,
+.grid-row,
+.two-column,
+.side-by-side{
+
+ width:100%;
+
+ display:flex;
+
+ box-sizing:border-box;
+
+ gap:10px;
+
+}
+
+
+/* 两边平均分 */
+.two-column > *,
+.side-by-side > *{
+
+ flex:1;
+
+ min-width:0;
+
+}
+
+
+/* 防止图片/宠物撑破 */
+img,
+canvas{
+
+ max-width:100%;
+
+ box-sizing:border-box;
+
+}
     /* 📖 书签 */
     .bookmark { position: absolute; top: 16px; right: 14px; width: 28px; height: 38px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
     .bookmark::after { content: ''; position: absolute; bottom: 0; border: 11px solid transparent; border-bottom: 6px solid var(--paper-bg); }
