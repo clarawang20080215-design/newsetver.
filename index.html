@@ -37,40 +37,36 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 /* 📱 让手机外框保持修长、细边框和完美滚动 */
+    /* 📱 让手机外框完美适配手机屏幕，防止上下溢出 */
     .phone-frame {
       width: 100%;
       max-width: 375px;
+      /* 🌟 核心修改：使用 100vh 配合 flex 布局内部滚动，或者直接用固定的安全高度 */
+      height: 100vh;
       height: 100dvh;
-      max-height: 840px;
       background: var(--paper-bg);
       position: relative;
       display: flex;
       flex-direction: column;
       
-      /* 🌟 核心优化 1：开启硬件加速，让手机滑动时极度丝滑，不卡顿 */
+      /* 🌟 核心优化：开启硬件加速 */
       transform: translateZ(0);
       -webkit-overflow-scrolling: touch; 
       
-      overflow: hidden; /* 外框固定，内部滚动 */
-      border-radius: 36px;
-      border: 1.5px solid rgba(0, 0, 0, 0.15);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      overflow: hidden; /* 外部绝对不滚动，由内部容器滚动 */
+      border-radius: 0; /* 手机全屏玩时可以去掉外框圆角，或者保留小圆角 */
+      border: none;
+      box-shadow: none;
       margin: auto;
     }
 
-    /* 🌟 核心优化 2：如果是页面内部需要上下滑动的区域（例如主页内容或日历下方） */
-    .scrollable-content {
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch; /* 保证在苹果手机上滑动有自然的“惯性滚动”阻尼感 */
-      overscroll-behavior-y: contain;   /* 防止下拉整个网页跟着一起乱晃 */
-    }
     @media (min-width: 420px) { 
       .phone-frame { 
-        border-radius: 20px;            /* 🌟 把圆角改小一点，显得更精细 */
-        height: 92vh;                   /* 🌟 稍微拉高一点高度，减少上下多余的空隙 */
+        border-radius: 24px;            
+        height: 88vh;                   /* 电脑端或大屏时限制高度 */
+        max-height: 780px;              /* 限制最大高度，避免太长 */
         box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
-        border: 2px solid var(--theme-outer); /* 🌟 把原本很厚重的 8px 边框改薄成 4px，额头就变窄了！ */
+        border: 2px solid var(--theme-outer); 
         overflow: hidden;
       } 
     }
@@ -107,18 +103,16 @@
     /* 🎨 封面区：让它紧贴状态栏下方，不溢出大框圆角 */
     .cover { 
       position: absolute; 
-      top: 26px; left: 0; right: 0; bottom: 0; /* 🌟 这样写可以完美贴合外框底端 */
+      top: 22px; /* 🌟 把原本的 26px 改小，让封面整体往上提 */
+      left: 0; right: 0; bottom: 0; 
       background: linear-gradient(135deg, var(--theme-accent-light), #fff); 
       z-index: 30; 
-      transition: 0.6s cubic-bezier(0.66, 0, 0.34, 1); 
-      transform-origin: left; 
-      padding: 8px 10px; 
+      padding: 6px 10px; /* 减小内边距 */
       display: flex; 
       flex-direction: column; 
-      overflow-y: auto; 
-      gap: 6px; 
+      overflow-y: auto; /* 确保内容过多时可以在内部顺畅滚动 */
+      gap: 4px; /* 缩减各个模块之间的间距，防止内容过长 */
     }
-
     /* 📅 翻看日历组件 */
     .calendar-card { background: #fff; border-radius: 12px; padding: 6px 8px; border: 1.5px solid var(--theme-accent); display: flex; flex-direction: column; gap: 4px; }
     .cal-header { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: bold; color: var(--text-main); padding: 0 2px; }
