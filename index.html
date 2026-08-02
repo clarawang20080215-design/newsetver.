@@ -37,17 +37,34 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { background: var(--theme-bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; font-family: var(--font-main); transition: background 0.4s; overflow: hidden; }
 
+    /* 📱 让手机外框保持修长、细边框和完美滚动 */
     .phone-frame {
       width: 100%;
-      max-width: 360px;            /* 稍微窄一点点，更有修长感 */
-      height: 100dvh;              /* 撑满屏幕 */
-      max-height: 840px;           /* 🌟 把最大高度拉大（原本是 780px），让它变成漂亮的修长条形 */
+      max-width: 375px;
+      height: 100dvh;
+      max-height: 840px;
       background: var(--paper-bg);
       position: relative;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      margin: 0 auto;
+      
+      /* 🌟 核心优化 1：开启硬件加速，让手机滑动时极度丝滑，不卡顿 */
+      transform: translateZ(0);
+      -webkit-overflow-scrolling: touch; 
+      
+      overflow: hidden; /* 外框固定，内部滚动 */
+      border-radius: 36px;
+      border: 1.5px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      margin: auto;
+    }
+
+    /* 🌟 核心优化 2：如果是页面内部需要上下滑动的区域（例如主页内容或日历下方） */
+    .scrollable-content {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; /* 保证在苹果手机上滑动有自然的“惯性滚动”阻尼感 */
+      overscroll-behavior-y: contain;   /* 防止下拉整个网页跟着一起乱晃 */
     }
     @media (min-width: 420px) { 
       .phone-frame { 
