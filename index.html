@@ -42,8 +42,22 @@
     }
     @media (min-width: 420px) { .phone-frame { border-radius: 30px; height: 88vh; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 8px solid var(--theme-outer); overflow: hidden;} }
 
-    .status-bar { height: 26px; background: rgba(255,253,249,0.95); display: flex; justify-content: space-between; align-items: center; padding: 0 14px; font-size: 10px; font-weight: 600; z-index: 50; flex-shrink: 0; border-bottom: 1px solid rgba(0,0,0,0.03); }
-
+    .status-bar { 
+      height: 26px; 
+      background: rgba(255,253,249,0.95); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 0 14px; 
+      font-size: 10px; 
+      font-weight: 600; 
+      z-index: 50; 
+      flex-shrink: 0; 
+      border-bottom: 1px solid rgba(0,0,0,0.03); 
+      
+      /* 🌟 把它稍微往回收一点，既往上移了一点点，又不会顶到最上面 */
+      margin-top: -4px; 
+    }
     /* 📖 书签 */
     .bookmark { position: absolute; top: 28px; right: 14px; width: 22px; height: 36px; background: #b85b5b; border-radius: 0 0 3px 3px; z-index: 45; cursor: pointer; box-shadow: -2px 2px 4px rgba(0,0,0,0.15); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
     .bookmark::after { content: ''; position: absolute; bottom: 0; border: 11px solid transparent; border-bottom: 6px solid var(--paper-bg); }
